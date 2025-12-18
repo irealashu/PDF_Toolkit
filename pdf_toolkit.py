@@ -1349,6 +1349,12 @@ class AboutPage(tk.Frame):
         lbl_email = tk.Label(info_frame, text=email, font=("Helvetica", 10, "underline"), fg="blue", cursor="hand2")
         lbl_email.pack(pady=2)
         lbl_email.bind("<Button-1>", lambda e: webbrowser.open(f"mailto:{email}"))
+
+        # Website Link (NEW)
+        site = "https://irealashu.in/"
+        lbl_site = tk.Label(info_frame, text=site, font=("Helvetica", 10, "underline"), fg="blue", cursor="hand2")
+        lbl_site.pack(pady=2)
+        lbl_site.bind("<Button-1>", lambda e: webbrowser.open(site))
         
         # Description
         desc = "A powerful utility to merge, split, watermark,\nrotate, and protect your PDF documents.\n\nBuilt with Python, Tkinter, PyPDF, ReportLab, and PyMuPDF."
