@@ -76,7 +76,8 @@ if %errorlevel% neq 0 (
 REM Activate venv
 call _venv\Scripts\activate
 
-REM 2. Install required librariesecho.
+REM 2. Install required libraries
+echo.
 echo [STEP 2/6] Installing libraries (this may take a minute)...
 python -m pip install --upgrade pip setuptools wheel >nul
 pip install pypdf pillow reportlab pymupdf pyinstaller cryptography ttkbootstrap >nul
