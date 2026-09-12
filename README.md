@@ -1,13 +1,13 @@
-# PDF Toolkit v7.0 Pro
+# PDF Toolkit v8 Pro
 
 ## Overview
-PDF Toolkit v7.0 Pro is a feature-rich desktop application built with Python that provides a complete suite of PDF manipulation and image conversion tools. It combines a modern, intuitive graphical interface with powerful backend processing capabilities, designed for both casual users and professionals who work with PDF documents and images.
+PDF Toolkit v8 Pro is a feature-rich desktop application built with Python that provides a complete suite of PDF manipulation and image conversion tools. It combines a modern, intuitive graphical interface with powerful backend processing capabilities, designed for both casual users and professionals who work with PDF documents and images.
 
 ## Key Features
 
 ### 1. Organize & Edit Pages
 - Load PDF documents and visually preview all pages in a grid layout
-- Rotate individual pages (90° increments)
+- Rotate individual pages
 - Reorder pages by inserting new PDFs at specific positions
 - Add images directly to PDF documents alongside existing PDF pages
 - Delete unwanted pages with one click
@@ -71,7 +71,7 @@ PDF Toolkit v7.0 Pro is a feature-rich desktop application built with Python tha
 - **Threading**: Async operations to prevent UI freezing
 - **Queue System**: Inter-thread communication for progress updates
 
-## Key Design Patterns & Improvements (v7.0)
+## Key Design Patterns & Improvements (v8)
 - **Comprehensive Error Handling**: Try-catch blocks throughout with detailed logging
 - **Worker Thread Architecture**: Long-running operations execute in background threads
 - **Memory Management**: Proper resource cleanup and file closing
@@ -160,13 +160,13 @@ PDF Toolkit v7.0 Pro is a feature-rich desktop application built with Python tha
 ## Development Information
 - **Developer**: Ashutosh Singh
 - **Email**: kshatriya205902@gmail.com
-- **Portfolio**: https://irealashu.in
+- **Portfolio**: https://irealashu.in/
 - **Repository**: irealashu/PDF_Toolkit
 - **Language**: Python, Batchfile
-- **Version**: 7.0 Pro
+- **Version**: v8 Pro
 - **License**: Apache License 2.0
 
-## What's New in v7.0
+## What's New in v8 Pro
 ✅ Production-ready with comprehensive error handling  
 ✅ Advanced memory management and resource cleanup  
 ✅ Thread-safe operations with proper synchronization  
@@ -180,4 +180,4 @@ PDF Toolkit v7.0 Pro is a feature-rich desktop application built with Python tha
 For bug reports, feature requests, or contributions, please visit the GitHub repository.
 
 ---
-**Status**: Actively maintained | **Last Updated**: 2026
+**Status**: Actively maintained | **Last Updated**: Sep-2026
