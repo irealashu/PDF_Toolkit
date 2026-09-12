@@ -2,9 +2,9 @@
 setlocal enabledelayedexpansion
 
 :: ===================================================================
-::  PDF Toolkit v7 Builder (Production Ready)
+::  PDF Toolkit v8 Pro Builder
 ::  
-::  Usage: build_app_v7.bat [--debug] [--upx <upx_path>] [--icon <icon_path>]
+::  Usage: build_app_v8.bat [--debug] [--upx <upx_path>] [--icon <icon_path>]
 ::  
 ::  Features:
 ::    --debug      Builds with console window for debugging
@@ -12,16 +12,16 @@ setlocal enabledelayedexpansion
 ::    --icon       Provide custom icon file path
 :: ===================================================================
 
-title PDF Toolkit v7 Builder (Production Ready)
+title PDF Toolkit v8 Pro Builder
 color 0A
 cls
 
 :: ===================================================================
 :: CONSTANTS & CONFIGURATION
 :: ===================================================================
-set "SCRIPT_NAME=PDF Toolkit v7 Builder"
-set "OUTPUT_EXE=PDF_Toolkit_v7.exe"
-set "SOURCE_FILE=pdf_toolkit_v7_improved.pyw"
+set "SCRIPT_NAME=PDF Toolkit v8 Pro Builder"
+set "OUTPUT_EXE=PDF_Toolkit_v8_Pro.exe"
+set "SOURCE_FILE=pdf_toolkit_v8_pro.pyw"
 set "TEMP_VENV=_venv"
 set "BUILD_DIR=_build"
 set "DEFAULT_ICON=app.ico"
