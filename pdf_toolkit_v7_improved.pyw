@@ -13,6 +13,9 @@ Changes from v6:
 - Configuration management with constants
 - Improved file validation and size checks
 
+Changes from v7.0:
+- Added PDF reordering feature in Merge section with move up/down buttons
+
 Dependencies: ttkbootstrap, pypdf, pillow, reportlab, pymupdf (fitz).
 """
 
@@ -749,23 +752,46 @@ class MergePage(ttk.Frame):
             font=("Segoe UI", 18, "bold")
         ).pack(anchor=W, pady=(0, 15))
         
-        f = ttk.Frame(self)
-        f.pack(fill=BOTH, expand=True)
+        # Main content frame
+        content_frame = ttk.Frame(self)
+        content_frame.pack(fill=BOTH, expand=True)
+        
+        # Left side - file list with reordering controls
+        left_frame = ttk.Frame(content_frame)
+        left_frame.pack(side=LEFT, fill=BOTH, expand=True, padx=(0, 10))
+        
+        ttk.Label(left_frame, text="PDF List (Reorderable):", font=("Segoe UI", 10, "bold")).pack(anchor=W, pady=(0, 5))
+        
+        list_frame = ttk.Frame(left_frame)
+        list_frame.pack(fill=BOTH, expand=True, pady=5)
+        
         self.lst = tk.Listbox(
-            f, 
+            list_frame, 
             font=("Consolas", 11), 
             borderwidth=0, 
             highlightthickness=0, 
             bg="white", 
             fg="black", 
-            selectbackground="#2780E3"
+            selectbackground="#2780E3",
+            activestyle='none'
         )
         self.lst.pack(side=LEFT, fill=BOTH, expand=True)
         
+        # Right side - reordering buttons
+        btn_frame = ttk.Frame(content_frame)
+        btn_frame.pack(side=RIGHT, fill=Y, padx=(10, 0))
+        
+        ttk.Label(btn_frame, text="Reorder:", font=("Segoe UI", 10, "bold")).pack(pady=(0, 10))
+        ttk.Button(btn_frame, text="▲ Up", command=self.move_up, bootstyle="primary", width=12).pack(pady=5, fill=X)
+        ttk.Button(btn_frame, text="▼ Down", command=self.move_down, bootstyle="primary", width=12).pack(pady=5, fill=X)
+        ttk.Separator(btn_frame, orient="horizontal").pack(fill=X, pady=15)
+        ttk.Button(btn_frame, text="Remove", command=self.remove_selected, bootstyle="danger", width=12).pack(pady=5, fill=X)
+        ttk.Button(btn_frame, text="Clear All", command=self.clr, bootstyle="danger", width=12).pack(pady=5, fill=X)
+        
+        # Control buttons
         ctl = ttk.Frame(self)
         ctl.pack(fill=X, pady=15)
         ttk.Button(ctl, text="Add PDFs", command=self.add, bootstyle="primary").pack(side=LEFT, padx=5)
-        ttk.Button(ctl, text="Clear List", command=self.clr, bootstyle="danger").pack(side=LEFT, padx=5)
         ttk.Button(ctl, text="Merge Now", command=self.run, bootstyle="success").pack(side=RIGHT, padx=5)
     
     def add(self):
@@ -776,14 +802,79 @@ class MergePage(ttk.Frame):
                     if validate_pdf(p):
                         self.files.append(p)
                         self.lst.insert(tk.END, os.path.basename(p))
+            logger.info(f"Added {len(ps)} PDF(s) to merge list")
         except Exception as e:
             logger.error(f"Failed to add PDFs: {e}")
             messagebox.showerror("Error", f"Failed to add PDFs: {str(e)}")
+
+    def move_up(self):
+        """Move selected item up in the list."""
+        selection = self.lst.curselection()
+        if not selection:
+            messagebox.showwarning("Warning", "Please select a PDF to move up")
+            return
+        
+        idx = selection[0]
+        if idx == 0:
+            messagebox.showinfo("Info", "Already at the top")
+            return
+        
+        with self.files_lock:
+            # Swap in files list
+            self.files[idx], self.files[idx - 1] = self.files[idx - 1], self.files[idx]
+        
+        # Update listbox
+        file_text = self.lst.get(idx)
+        self.lst.delete(idx)
+        self.lst.insert(idx - 1, file_text)
+        self.lst.selection_set(idx - 1)
+        logger.info(f"Moved PDF up: {file_text}")
+
+    def move_down(self):
+        """Move selected item down in the list."""
+        selection = self.lst.curselection()
+        if not selection:
+            messagebox.showwarning("Warning", "Please select a PDF to move down")
+            return
+        
+        idx = selection[0]
+        if idx == self.lst.size() - 1:
+            messagebox.showinfo("Info", "Already at the bottom")
+            return
+        
+        with self.files_lock:
+            # Swap in files list
+            self.files[idx], self.files[idx + 1] = self.files[idx + 1], self.files[idx]
+        
+        # Update listbox
+        file_text = self.lst.get(idx)
+        self.lst.delete(idx)
+        self.lst.insert(idx + 1, file_text)
+        self.lst.selection_set(idx + 1)
+        logger.info(f"Moved PDF down: {file_text}")
+
+    def remove_selected(self):
+        """Remove selected item from the list."""
+        selection = self.lst.curselection()
+        if not selection:
+            messagebox.showwarning("Warning", "Please select a PDF to remove")
+            return
+        
+        idx = selection[0]
+        file_text = self.lst.get(idx)
+        
+        with self.files_lock:
+            if idx < len(self.files):
+                del self.files[idx]
+        
+        self.lst.delete(idx)
+        logger.info(f"Removed PDF: {file_text}")
 
     def clr(self):
         with self.files_lock:
             self.files = []
         self.lst.delete(0, tk.END)
+        logger.info("Cleared all PDFs from merge list")
 
     def run(self):
         with self.files_lock:
