@@ -10,7 +10,7 @@ export const StatusBar: React.FC<StatusBarProps> = ({ status, progress }) => {
     <footer className="bg-[#f8f9fa] border-t border-[#e9ecef] px-5 py-2 flex items-center justify-between text-xs text-slate-700 shrink-0 select-none">
       <div className="flex items-center gap-2">
         <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-        <span className="font-medium text-slate-800">{status || 'Ready | v8.0 Pro'}</span>
+        <span className="font-medium text-slate-800">{status || 'Ready | v1.0 Pro'}</span>
       </div>
 
       <div className="flex items-center gap-3">

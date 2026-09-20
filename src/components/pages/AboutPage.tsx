@@ -20,7 +20,7 @@ export const AboutPage: React.FC = () => {
 
         <h2 className="text-2xl font-bold text-slate-900 tracking-tight">PDF Toolkit</h2>
         <p className="text-xs font-semibold text-[#2780e3] mt-1 bg-blue-50 inline-block px-2.5 py-0.5 rounded-full">
-          Version 8.0 Pro
+          Version 1.0 Pro
         </p>
 
         <p className="text-xs text-slate-500 mt-3 max-w-md mx-auto leading-relaxed">

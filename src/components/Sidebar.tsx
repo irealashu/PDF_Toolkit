@@ -160,7 +160,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Bottom Footer note */}
       <div className="p-2 border-t border-[#e9ecef] text-[10px] text-slate-400 text-center truncate">
-        {isCollapsed ? <span>v8.0</span> : <span>PDF Toolkit v8.0 Pro</span>}
+        {isCollapsed ? <span>v1.0</span> : <span>PDF Toolkit v1.0 Pro</span>}
       </div>
     </aside>
   );

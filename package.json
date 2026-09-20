@@ -1,7 +1,7 @@
 {
-  "name": "pdf-toolkit-v8-pro",
+  "name": "pdf-toolkit-v1-pro",
   "private": true,
-  "version": "8.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",

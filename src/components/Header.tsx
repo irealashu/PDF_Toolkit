@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-baseline gap-2">
             <h1 className="text-lg sm:text-xl font-bold tracking-tight">PDF Toolkit</h1>
             <span className="text-[11px] font-semibold text-blue-100 bg-blue-700/70 px-2 py-0.5 rounded">
-              v8.0 Pro
+              v1.0 Pro
             </span>
           </div>
         </div>

@@ -58,7 +58,7 @@ export const ProtectPage: React.FC<ProtectPageProps> = ({ onNotify, onSetStatus 
       copiedPages.forEach((p) => encryptedDoc.addPage(p));
       
       encryptedDoc.setTitle(`${pdfDoc.getTitle() || file.name} [Protected]`);
-      encryptedDoc.setSubject(`Protected with password by PDF Toolkit v8 Pro`);
+      encryptedDoc.setSubject(`Protected with password by PDF Toolkit v1.0 Pro`);
 
       const outBytes = await encryptedDoc.save({ useObjectStreams: true });
       downloadFile(outBytes, `encrypted_${file.name}`);

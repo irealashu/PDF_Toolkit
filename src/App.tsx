@@ -26,7 +26,7 @@ import { NavSection, ToastMessage } from './types';
 
 export const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<NavSection>('organize');
-  const [status, setStatus] = useState<string>('Ready | v8.0 Pro');
+  const [status, setStatus] = useState<string>('Ready | v1.0 Pro');
   const [progress, setProgress] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
