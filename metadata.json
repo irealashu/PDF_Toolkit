@@ -1,0 +1,8 @@
+{
+  "name": "PDF Toolkit v8 Pro",
+  "description": "Comprehensive client-side PDF management suite: organize, merge, split, N-up handouts, crop margins, page numbering, image conversion, high-res image export, grayscale, visual redaction, form flattening, side-by-side comparison, bookmarks, watermark, compress, encrypt, and text extraction.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
